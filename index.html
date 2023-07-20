@@ -22,19 +22,19 @@
 
                     <div id="carousel_container" class="position-relative m-auto border border-dark">
 
-                        <div class="carousel_img_container position-absolute top-0 start-0 ${imageClasses}">
-                            <img src="" alt="" class="w-100 h-100">
+                        <div class="carousel_img_container position-absolute top-0 start-0" v-for="(singleImg, i) in images" v-bind:class="activeImgIndex === i ? 'active' : '' ">
+                            <img v-bind:src="singleImg.image" v-bind:alt="'image n.' + ++i" class="w-100 h-100">
                             <div class="carousel_text_container ps-2 text-white">
-                                <h4></h4>
-                                <p></p>
+                                <h4></h4>{{singleImg.title}}</h4>
+                                <p>{{singleImg.text}}</p>
                             </div>
                         </div>
 
                         <div id="carousel_btn_container" class="d-flex justify-content-between">
 
-                            <div id="back_btn" class="btn btn-info">&lt;</div>
+                            <div id="back_btn" class="btn btn-info" @click="backBtnClick">&lt;</div>
 
-                            <div id="fwd_btn" class="btn btn-info">&gt;</div>
+                            <div id="fwd_btn" class="btn btn-info" @click="fwdBtnClick">&gt;</div>
 
                         </div>
 
